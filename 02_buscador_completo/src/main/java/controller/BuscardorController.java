@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -22,32 +23,19 @@ public class BuscardorController {
 		return "resultados";
 	
 	}
-	@PostMapping(value="alta")
+	/*@PostMapping(value="alta")
 	public String altaResultado(@RequestParam("url") String url,
 								@RequestParam("tematica") String tematica,
 								@RequestParam("descripcion")String descripcion) {
 		Resultado resultado=new Resultado(url,tematica,descripcion);
 		return service.agregar(resultado)?"inicio":"error";
 
+	}*/
+	@PostMapping(value="alta")
+	public String altaResultado(@ModelAttribute Resultado resultado) {
+		return service.agregar(resultado)?"inicio":"error";
 	}
-	@GetMapping(value="toBuscarResultados")
-	public String paginaBuscar() {
-		return "buscarResultados";
-	}
-	
-	@GetMapping(value="toAlta")
-	public String paginaAlta() {
-		return "alta";
-	}
-	@GetMapping(value={"toInicio","/"})
-	public String paginaInicio() {
-		return "inicio";
-	}
-	@GetMapping(value= {"toBuscarUrl"})
-	public String paginaBuscarUrl() {
-		return "buscarUrl";
-		
-	}
+
 	@GetMapping(value="buscarUrl")
 	public String buscarResultado(@RequestParam("url") String url, HttpServletRequest request) {
 		Resultado res=service.buscarPorUrl(url);
@@ -59,9 +47,6 @@ public class BuscardorController {
 		service.eliminar(url);
 		return "inicio";
 	}
-	@GetMapping(value="toEliminar")
-	public String toEliminar() {
-		return "eliminar";
-	}
 
+	// las navegaciones estáticas están en el archivo de configuración del controller
 }

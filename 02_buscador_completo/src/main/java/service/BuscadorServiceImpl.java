@@ -43,7 +43,7 @@ public class BuscadorServiceImpl implements BuscadorService {
 			}
 		return true;
 	}*/
-		if(resultados.stream()
+		if(!resultados.stream()
 				.anyMatch(r->r.getUrl().equals(resultado.getUrl()))) {
 			resultados.add(resultado);
 			return true;
