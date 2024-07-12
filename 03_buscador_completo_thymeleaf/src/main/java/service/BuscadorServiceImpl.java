@@ -3,10 +3,12 @@ package service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import model.Resultado;
 @Service
+@Scope("singleton")
 public class BuscadorServiceImpl implements BuscadorService {
 
 	static List<Resultado> resultados=new ArrayList<>(List.of(

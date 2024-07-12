@@ -8,10 +8,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.thymeleaf.spring6.SpringTemplateEngine;
 import org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring6.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
+
 @ComponentScan(basePackages = {"controller"})
 @EnableWebMvc
 @Configuration
@@ -41,32 +43,17 @@ public class MvcConfig implements WebMvcConfigurer{
 	 viewResolver.setTemplateEngine(templateEngine());
 	 return viewResolver;
 	} 
-
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
-		registry.addViewController("/toBuscarResultados").setViewName("buscarResultados");
-		registry.addViewController("/toAlta").setViewName("alta");
-		registry.addViewController("/").setViewName("inicio");
-		registry.addViewController("/toInicio").setViewName("inicio");
-		registry.addViewController("/toBuscarUrl").setViewName("buscarUrl");
+		registry.addViewController("/toNuevo").setViewName("nuevo");
+		registry.addViewController("/toBuscarCursos").setViewName("buscarCursos");
+		registry.addViewController("/").setViewName("menu");
+		registry.addViewController("/toMenu").setViewName("menu");
 		registry.addViewController("/toEliminar").setViewName("eliminar");
 		WebMvcConfigurer.super.addViewControllers(registry);
 		
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
+	
+	
