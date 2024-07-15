@@ -1,8 +1,6 @@
 package controller;
 
-import java.util.ArrayList;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,8 +14,16 @@ import service.CursosService;
 
 @Controller
 public class CursosController {
-	@Autowired//自我接线
+	
 	CursosService service;
+	
+	public CursosController(CursosService service) {
+		super();
+		this.service = service;
+	}
+
+
+
 	@GetMapping(value="formAlta")
 	public String prepararAlta(Model model) {
 		model.addAttribute("curso", new Curso());
@@ -33,8 +39,8 @@ public class CursosController {
 	
 	@GetMapping(value="buscarCursos")
 	public String buscarCursos(@RequestParam ("precioMax") double precioMax, HttpServletRequest request) {
-		ArrayList<Curso> listaMax=service.precioCursoMax(precioMax);
-		request.setAttribute("cursos", listaMax);
+	
+		request.setAttribute("cursos", service.precioCursoMax(precioMax));
 		return "cursos";
 	}
 	@PostMapping(value={"eliminar"})

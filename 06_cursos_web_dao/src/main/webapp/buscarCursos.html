@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="Expires" content="0">
@@ -7,7 +7,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
 <meta http-equiv="Pragma" content="no-cache"> 
 <meta charset="UTF-8">
-<title>Nuevo curso</title>
+<title></title>
 <style type="text/css">
 body {
 	color: purple;
@@ -28,8 +28,8 @@ div {
 
 input {
 	color: purple;
-	margin: 0 auto; 
-	display : block;
+	margin: 0 auto;
+	display: block;
 	margin-bottom: 15px;
 	border: 1px solid purple;
 	padding: 7px;
@@ -39,15 +39,11 @@ input {
 </head>
 <body>
 	<div>
-		<h1>Añadir nuevo curso</h1>
-		<form action="alta" method="post">
-			Nombre curso:<input type="text" th:field="${curso.nombre}"><br>
-			Duración curso:<input type="text" th:field="${curso.duracion}"><br> 
-			Precio curso:<input type="text" th:field="${curso.precio}"> <br>
-			<input type="submit" value="Alta">
+		
+		<form action="buscarCursos" method="get">
+		Introduce precio máximo: <input type="number" name="precioMax"><br>
+			 <input type="submit" value="Buscar">
 		</form>
-		<br>
-		<a href="toMenu">Salir</a>
 	</div>
 </body>
-</html>
+</html> 
