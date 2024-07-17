@@ -37,6 +37,7 @@ public class MvcConfig implements WebMvcConfigurer{
 	 templateEngine.setEnableSpringELCompiler(true);
 	 return templateEngine;
 	}
+	
 	@Bean
 	public ThymeleafViewResolver viewResolver(){
 	 ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
@@ -45,7 +46,7 @@ public class MvcConfig implements WebMvcConfigurer{
 	} 
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
-		registry.addViewController("/toNuevo").setViewName("nuevo");
+		//registry.addViewController("/toNuevo").setViewName("nuevo");
 		registry.addViewController("/toBuscarCursos").setViewName("buscarCursos");
 		registry.addViewController("/").setViewName("menu");
 		registry.addViewController("/toMenu").setViewName("menu");

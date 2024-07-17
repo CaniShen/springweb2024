@@ -16,9 +16,7 @@ import service.CursosService;
 public class CursosController {
 	
 	CursosService service;
-	
 	public CursosController(CursosService service) {
-		super();
 		this.service = service;
 	}
 
@@ -44,7 +42,7 @@ public class CursosController {
 		return "cursos";
 	}
 	@PostMapping(value={"eliminar"})
-	public String eliminar(@RequestParam ("nombre") String nombre, HttpServletRequest request) {
+	public String eliminar(@RequestParam ("nombre") String nombre) {
 		service.eliminar(nombre);
 		return "menu";
 	}
