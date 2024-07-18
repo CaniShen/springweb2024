@@ -1,20 +1,30 @@
-package model;
+package entities;
 
-public class LibroDto {
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="libros")
+public class Libro {
+	@Id
 	private int isbn;
 	private String titulo;
 	private String autor;
 	private double precio;
 	private int paginas;
-	private TemaDto temaDto;
-	public LibroDto(int isbn, String titulo, String autor, double precio, int paginas, TemaDto temaDto) {
+	private int idTema;
+	public Libro(int isbn, String titulo, String autor, double precio, int paginas, int idTema) {
 		super();
 		this.isbn = isbn;
 		this.titulo = titulo;
 		this.autor = autor;
 		this.precio = precio;
 		this.paginas = paginas;
-		this.temaDto = temaDto;
+		this.idTema = idTema;
+	}
+	public Libro() {
+		super();
 	}
 	public int getIsbn() {
 		return isbn;
@@ -46,11 +56,11 @@ public class LibroDto {
 	public void setPaginas(int paginas) {
 		this.paginas = paginas;
 	}
-	public TemaDto getTemaDto() {
-		return temaDto;
+	public int getIdTema() {
+		return idTema;
 	}
-	public void setTemaDto(TemaDto temaDto) {
-		this.temaDto = temaDto;
+	public void setIdTema(int idTema) {
+		this.idTema = idTema;
 	}
 	
 }
