@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import jakarta.servlet.http.HttpSession;
 import model.ClienteDto;
 import model.LibroDto;
+import model.TemaDto;
 import service.ClientesService;
 import service.LibrosService;
 
@@ -90,5 +91,12 @@ public class LibreriaController {
 		model.addAttribute("temas", librosService.getTemas());
 		return "alta";
 	}
-
+	
+	@GetMapping(value="temaTitulo", produces=MediaType.TEXT_PLAIN_VALUE)
+	public @ResponseBody TemaDto temaPorTitulo(@RequestParam("titulo") String titulo) {
+		return librosService.buscarTemaTitulo(titulo)
+;	}
+	
+	
+	
 }

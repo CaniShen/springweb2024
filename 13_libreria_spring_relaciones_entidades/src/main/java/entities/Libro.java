@@ -1,23 +1,35 @@
-package model;
+package entities;
 
-public class LibroDto {
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="libros")
+public class Libro {
+	@Id
 	private int isbn;
 	private String titulo;
 	private String autor;
 	private double precio;
 	private int paginas;
-	private TemaDto temaDto;
-	public LibroDto(int isbn, String titulo, String autor, double precio, int paginas, TemaDto temaDto) {
+	@ManyToOne
+	@JoinColumn(name="idTema",referencedColumnName ="idTema")
+	private Tema tema;
+	
+	
+	public Libro(int isbn, String titulo, String autor, double precio, int paginas, Tema tema) {
 		super();
 		this.isbn = isbn;
 		this.titulo = titulo;
 		this.autor = autor;
 		this.precio = precio;
 		this.paginas = paginas;
-		this.temaDto = temaDto;
+		this.tema = tema;
 	}
-	public LibroDto() {
-		
+	public Libro() {
 	}
 	public int getIsbn() {
 		return isbn;
@@ -49,11 +61,15 @@ public class LibroDto {
 	public void setPaginas(int paginas) {
 		this.paginas = paginas;
 	}
-	public TemaDto getTemaDto() {
-		return temaDto;
+	public Tema getTema() {
+		return tema;
 	}
-	public void setTemaDto(TemaDto temaDto) {
-		this.temaDto = temaDto;
+	public void setTema(Tema tema) {
+		this.tema = tema;
 	}
+	
+	
+	
+	
 	
 }
