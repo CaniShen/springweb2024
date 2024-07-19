@@ -46,12 +46,12 @@ public class ServiceConfig {
 
 	// factoria EntityManager: Objeto para acceder a capa de persistencia con JPA
 	@Bean
-	public LocalContainerEntityManagerFactoryBean factory(DriverManagerDataSource datasource,
+	public LocalContainerEntityManagerFactoryBean factory(DriverManagerDataSource dataSource,
 			HibernateJpaVendorAdapter adapter) {
 		LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
-		factory.setDataSource(getDataSource());
+		factory.setDataSource(dataSource);
 		factory.setPackagesToScan("entities");
-		factory.setJpaVendorAdapter(adapter());
+		factory.setJpaVendorAdapter(adapter);
 		return factory;
 	}
 

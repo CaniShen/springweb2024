@@ -31,7 +31,7 @@
 					"precio":$("#precio").val(),
 					"paginas":$("#paginas").val(),
 					"idTema":$("#tematica").val()};
-			$.get(url,params,function(data){
+			$.post(url,params,function(data){
 	
 				let mensaje;
 				if(data=="true") {
