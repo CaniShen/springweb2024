@@ -53,7 +53,7 @@ public class LibreriaController {
 		return String.valueOf(librosService.guardarLibro(libro));
 	}
 	
-	@GetMapping(value="librosTema", produces=MediaType.TEXT_PLAIN_VALUE )
+	@GetMapping(value="librosTema", produces=MediaType.APPLICATION_JSON_VALUE )
 	public @ResponseBody List<LibroDto> librosTema(@RequestParam("idTema") int idTema) {
 		return librosService.librosTema(idTema);
 	}
@@ -67,7 +67,7 @@ public class LibreriaController {
 	
 		return "registro";
 	}
-	@GetMapping(value="eliminarCarrito", produces=MediaType.TEXT_PLAIN_VALUE )
+	@GetMapping(value="eliminarCarrito", produces=MediaType.APPLICATION_JSON_VALUE )
 	public @ResponseBody List<LibroDto> quitarCarrito(@RequestParam("pos") int pos, @SessionAttribute("carrito") List<LibroDto> carrito){
 		/*List<LibroDto> carrito=new ArrayList<>();
 		if(sesion.getAttribute("carrito")!=null) {
