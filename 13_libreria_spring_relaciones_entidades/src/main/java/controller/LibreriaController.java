@@ -94,8 +94,14 @@ public class LibreriaController {
 	
 	@GetMapping(value="temaTitulo", produces=MediaType.TEXT_PLAIN_VALUE)
 	public @ResponseBody TemaDto temaPorTitulo(@RequestParam("titulo") String titulo) {
-		return librosService.buscarTemaTitulo(titulo)
-;	}
+		return librosService.buscarTemaTitulo(titulo);
+	
+	}
+	@GetMapping(value="misCompras")
+	public String misCompras(Model model, @SessionAttribute("usuario") String usuario) {
+		model.addAttribute("compras", clientesService.ventasCliente(usuario));
+		return "compras";
+	}
 	
 	
 	

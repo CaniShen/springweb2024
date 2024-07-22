@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+<b th:text="${session.usuario}"></b>
+	<center>
+			<h2>Compras de :<b th:text="${session.usuario}"></b></h2>
+			<table border="1">
+				<tr><th>Libro</th><th>Fecha</th></tr>
+				<tr th:each="v:${compras}">
+					<td th:text="${v.tituloLibro}"></td>
+					<td th:text="${v.fecha}">
+				</tr>
+				
+				
+				
+			</table>
+			<br>
+			<a href="toInicio">Volver</a>	
+	</center>
+	
+</body>
+</html>

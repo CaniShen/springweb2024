@@ -2,11 +2,11 @@ package model;
 
 public class TemaDto {
 	private int idTema;
-	private String tema;
-	public TemaDto(int idTema, String tema) {
+	private String nombreTema;
+	public TemaDto(int idTema, String nombreTema) {
 		super();
 		this.idTema = idTema;
-		this.tema = tema;
+		this.nombreTema = nombreTema;
 	}
 	public TemaDto() {
 		super();
@@ -17,11 +17,11 @@ public class TemaDto {
 	public void setIdTema(int idTema) {
 		this.idTema = idTema;
 	}
-	public String getTema() {
-		return tema;
+	public String getNombreTema() {
+		return nombreTema;
 	}
-	public void setTema(String tema) {
-		this.tema = tema;
+	public void setNombreTema(String nombreTema) {
+		this.nombreTema = nombreTema;
 	}
 	
 

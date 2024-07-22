@@ -1,21 +1,28 @@
 package service;
 
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import dao.ClientesDao;
+import dao.VentasDao;
 import entities.Cliente;
 import model.ClienteDto;
+import model.VentaDto;
 import utilidades.Mapeador;
 @Service
 public class ClientesServiceImpl implements ClientesService {
 	ClientesDao clientesDao;
 	Mapeador mapeador;
+	VentasDao ventasDao;
 	
 
 	public ClientesServiceImpl(ClientesDao clientesDao, Mapeador mapeador) {
 		this.clientesDao = clientesDao;
 		this.mapeador = mapeador;
+		this.ventasDao = ventasDao;
 	}
 
 	@Override
@@ -33,6 +40,13 @@ public class ClientesServiceImpl implements ClientesService {
 		clientesDao.save(mapeador.clienteDtoToEntity(cliente));
 		return true;
 	
+	}
+	@Transactional
+	@Override
+	public List<VentaDto> ventasCliente(String usuario) {
+		return ventasDao.findByUsuario(usuario).stream()
+				.map(v->mapeador.ventaEntityToDto(v))
+				.toList();
 	}
 
 }

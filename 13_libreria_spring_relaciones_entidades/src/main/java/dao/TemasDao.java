@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import entities.Tema;
 
 public interface TemasDao extends JpaRepository<Tema, Integer> {
-		@Query("select t from Tema t join t.libros l where t.libro.titulo=?1")
+		@Query("select t from Tema t join t.libros l where l.titulo=?1")
 		Tema findyByTituloLibro(String titulo);
 
 }

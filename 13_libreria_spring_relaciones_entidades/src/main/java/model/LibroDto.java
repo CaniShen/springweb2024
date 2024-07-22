@@ -16,6 +16,11 @@ public class LibroDto {
 		this.paginas = paginas;
 		this.temaDto = temaDto;
 	}
+	
+	public LibroDto() {
+		super();
+	}
+
 	public int getIsbn() {
 		return isbn;
 	}
