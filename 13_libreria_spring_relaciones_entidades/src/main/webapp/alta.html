@@ -14,7 +14,7 @@
 			Precio:<input type="text" id="precio" name="precio" placeholder="precio"> <br>
 			Páginas:<input type="text" id="paginas" name="paginas" placeholder="paginas"> <br>
 			Temático: <select id="tematica" >
-							<option th:each="t:${temas}" th:value="${t.idTemas}" th:text="${t.nombreTema}"></option>
+							<option th:each="t:${temas}" th:value="${t.idTema}" th:text="${t.nombreTema}"></option>
 						</select>
 
 			<input type="button" value="Alta" id="alta">

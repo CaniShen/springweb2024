@@ -19,7 +19,7 @@ public class ClientesServiceImpl implements ClientesService {
 	VentasDao ventasDao;
 	
 
-	public ClientesServiceImpl(ClientesDao clientesDao, Mapeador mapeador) {
+	public ClientesServiceImpl(ClientesDao clientesDao, Mapeador mapeador, VentasDao ventasDao) {
 		this.clientesDao = clientesDao;
 		this.mapeador = mapeador;
 		this.ventasDao = ventasDao;
