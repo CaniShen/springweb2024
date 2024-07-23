@@ -2,7 +2,6 @@ package service;
 
 import java.util.List;
 
-import entities.Tema;
 import model.LibroDto;
 import model.TemaDto;
 

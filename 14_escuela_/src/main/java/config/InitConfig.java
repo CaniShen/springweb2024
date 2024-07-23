@@ -28,6 +28,6 @@ public class InitConfig implements WebApplicationInitializer {
 				new DispatcherServlet(dispatcherContext));
 		dispatcher.setLoadOnStartup(1);
 		dispatcher.addMapping("/");
-		System.out.println("qqqqqqqqqqqqqqqq");
+		System.out.println("000");
 	}
 }
