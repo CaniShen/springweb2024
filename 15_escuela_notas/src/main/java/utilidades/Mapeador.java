@@ -16,8 +16,8 @@ public class Mapeador {
 							curso.getDuracion(),
 							curso.getFechaInicio(),
 							curso.getPrecio(),
-							curso.getAlumnos().stream()
-							.map(a->alumnoEntityToDto(a))
+							curso.getMatriculas().stream()
+							.map(m->alumnoEntityToDto(m.getAlumno()))
 							.toList());
 	}
 	

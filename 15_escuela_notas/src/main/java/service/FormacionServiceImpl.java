@@ -7,7 +7,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import dao.AlumnosDao;
 import dao.CursosDao;
-import model.AlumnoDto;
+import dao.MatriculasDao;
+import model.AlumnoMatriculadoDto;
 import model.CursoDto;
 import utilidades.Mapeador;
 @Service
@@ -15,10 +16,12 @@ public class FormacionServiceImpl implements FormacionService {
 	Mapeador mapeador;
 	CursosDao cursosDao;
 	AlumnosDao alumnosDao;
+	MatriculasDao matriculasDao;
 
 	public FormacionServiceImpl(Mapeador mapeador, CursosDao cursosDao, AlumnosDao alumnosDao) {
 		this.mapeador = mapeador;
 		this.cursosDao = cursosDao;
+		this.matriculasDao=matriculasDao;
 		this.alumnosDao = alumnosDao;
 	}
 	//estq anotación se pone para evitar que hibernate cierre la sesión al obtener el 
@@ -29,12 +32,17 @@ public class FormacionServiceImpl implements FormacionService {
 
 		return cursosDao.findAll().stream().map(c -> mapeador.cursoEntityToDto(c)).toList();
 	}
-
+	@Transactional
 	@Override
-	public List<AlumnoDto> buscarAlumnosMatriculados(int idCurso) {
-		return alumnosDao.findByIdCurso(idCurso).stream()
-				.map(a->mapeador.alumnoEntityToDto(a))
-				.toList(); 
+	public List<AlumnoMatriculadoDto> buscarAlumnosMatriculados(int idCurso) {
+		//a partir del curso, obtiene las matriculas y en ellas están tanto curso como alumno
+				return cursosDao.findById(idCurso).get() //Curso
+						.getMatriculas().stream() //Stream<Matricula>
+						.map(m->new AlumnoMatriculadoDto(mapeador.alumnoEntityToDto(m.getAlumno()),
+								mapeador.cursoEntityToDto(m.getCurso()),
+								m.getNota()))//Stream<AlumnoMatriculadoDto>
+						.toList(); 
+
 	}
 	@Override
 	public boolean altaCurso(CursoDto curso) {
@@ -43,6 +51,13 @@ public class FormacionServiceImpl implements FormacionService {
 			return true;
 		}
 		return false;
+	}
+	@Override
+	public double notaMediaCurso(int idCurso) {
+		if(cursosDao.findById(idCurso).isPresent()) {
+			return matriculasDao.avgByIdCurso(idCurso);
+		}
+		return 0;
 	}
 
 }

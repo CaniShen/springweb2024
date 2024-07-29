@@ -27,7 +27,6 @@ public class MvcConfig implements WebMvcConfigurer{
 	 templateResolver.setSuffix(".html");
 	 // HTML es la plantilla por defecto, se indica por claridad.
 	 templateResolver.setTemplateMode(TemplateMode.HTML);
-	 System.out.println("66666666");
 	 return templateResolver;
 	 
 	}
