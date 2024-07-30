@@ -32,10 +32,19 @@ public class Mapeador {
 	}
 	public Curso cursoDtoToEntity(CursoDto curso) {
 		return new Curso(0,
-						curso.getNombre(),
-						curso.getDuracion(),
-						curso.getFechaInicio(),
-						curso.getPrecio());
+				curso.getNombre(),
+				curso.getDuracion(),
+				curso.getFechaInicio(),
+				curso.getPrecio());
+	}
 
+
+
+	public Alumno alumnoDtoToEntity(AlumnoDto alumno) {
+		return new Alumno(alumno.getUsuario(),
+				alumno.getPassword(),
+				alumno.getNombre(),
+				alumno.getEmail(),
+				alumno.getEdad());
 	}
 }

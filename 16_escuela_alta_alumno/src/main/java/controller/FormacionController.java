@@ -22,11 +22,21 @@ public class FormacionController {
 	public FormacionController(FormacionService formacionService) {
 		this.formacionService = formacionService;		
 	}
-	@GetMapping(value="/")
+	@GetMapping(value="/cursos")
 	public String inicial(Model model) {
 		
 		model.addAttribute("cursos",formacionService.cursos());
 		return "cursos";
+		
+		
+	}
+	
+	@GetMapping(value="/matricular")
+	public String inicialMatricular(Model model) {
+		
+		model.addAttribute("cursos",formacionService.cursos());
+		model.addAttribute("alumnos",formacionService.alumnos());
+		return "matricular";
 		
 		
 	}
@@ -40,6 +50,10 @@ public class FormacionController {
 		return String.valueOf(formacionService.altaCurso(curso));
 	}
 	
+	@PostMapping(value="matriculacion",produces=MediaType.TEXT_PLAIN_VALUE)
+	public @ResponseBody String matriculacion(@ModelAttribute CursoDto curso, @ModelAttribute AlumnoDto alumno){
+		return String.valueOf(formacionService.matricular(curso, alumno));
+	}
 	
 	
 	

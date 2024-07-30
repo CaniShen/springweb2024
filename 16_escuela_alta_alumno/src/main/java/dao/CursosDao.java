@@ -13,7 +13,7 @@ public interface CursosDao extends JpaRepository<Curso, Integer> {
 	@Query("select c from Curso c join c.alumnos a where a.usuario=?1")
 	List<Curso> findByUsuario(String usuario);
 	@Query("select c from Curso c where c not in(select c from Curso c join c.alumnos a where a.usuario=?1)")
-	Set<Curso> findCursosByUsuarioNoMatriculado(String usuario);
+	List<Curso> findByNoMatriculado(String usuario);
 	@Query("select c from Curso c where c.nombre=?1 and c.fechaInicio=?2")
 	Curso findByNombreAndFechaInicio(String x, LocalDate fecha);
 }
