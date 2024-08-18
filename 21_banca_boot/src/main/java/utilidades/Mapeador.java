@@ -1,5 +1,7 @@
 package utilidades;
 
+import org.springframework.stereotype.Component;
+
 import entities.Cliente;
 import entities.Cuenta;
 import entities.Movimiento;
@@ -7,7 +9,7 @@ import model.ClienteDto;
 import model.CuentaDto;
 import model.MovimientoDto;
 
-
+@Component
 public class Mapeador {
 	public ClienteDto clienteEntityToDto(Cliente cliente) {
 		return new ClienteDto(cliente.getDni(),
