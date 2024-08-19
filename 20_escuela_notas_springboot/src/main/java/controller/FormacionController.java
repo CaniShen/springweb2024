@@ -42,7 +42,10 @@ public class FormacionController {
 	public @ResponseBody String notaMediaCurso(@RequestParam("idCurso") int idCurso) {
 		return String.valueOf(formacionService.notaMediaCurso(idCurso));
 	}
-	
+	@PostMapping(value="altaAlumno",produces=MediaType.TEXT_PLAIN_VALUE)
+	public @ResponseBody String altaAlumno(@ModelAttribute AlumnoDto alumno) {
+		return String.valueOf(formacionService.altaAlumno(alumno));
+	}
 	
 	
 	

@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import dao.AlumnosDao;
 import dao.CursosDao;
 import dao.MatriculasDao;
+import model.AlumnoDto;
 import model.AlumnoMatriculadoDto;
 import model.CursoDto;
 import utilidades.Mapeador;
@@ -58,6 +59,14 @@ public class FormacionServiceImpl implements FormacionService {
 			return matriculasDao.avgByIdCurso(idCurso);
 		}
 		return 0;
+	}
+	@Override
+	public boolean altaAlumno(AlumnoDto alumno) {
+		if(alumnosDao.findByUsuario(alumno.getUsuario()) == null) {
+			alumnosDao.save(mapeador.alumnoDtoToEntity(alumno));
+			return true;
+		}
+		return false;
 	}
 
 }

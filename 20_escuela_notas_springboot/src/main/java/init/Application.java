@@ -19,6 +19,7 @@ public class Application implements WebMvcConfigurer{
 		registry.addViewController("/").setViewName("inicio");
 		registry.addViewController("/toInicio").setViewName("inicio");
 		registry.addViewController("/toAlta").setViewName("alta");		
+		registry.addViewController("/toAltaAlumnno").setViewName("alta-alumno");
 		WebMvcConfigurer.super.addViewControllers(registry);
 		
 		
