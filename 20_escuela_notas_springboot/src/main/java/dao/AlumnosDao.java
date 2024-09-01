@@ -12,4 +12,6 @@ public interface AlumnosDao extends JpaRepository<Alumno, String> {
 	//@Query("select distinct(a) from Alumno a join a.matriculas m where m.pk.idCurso=?1")
 	List<Alumno> findByIdCurso(int idCurso);
 	
+	@Query("select a from Alumno a where a.usuario=?1")
+	Alumno findByUsuario(String usuario);
 }

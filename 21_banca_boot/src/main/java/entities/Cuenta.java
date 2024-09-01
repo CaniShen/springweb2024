@@ -30,7 +30,7 @@ public class Cuenta {
 	@Column(name="tipocuenta")
 	private String tipoCuenta;
 	@ManyToMany()
-	@JoinTable(name="titulares",joinColumns=@JoinColumn(name="idCuenta",referencedColumnName = "numeroCuenta"),
+	@JoinTable(name="titulares",joinColumns = @JoinColumn(name="idCuenta",referencedColumnName = "numeroCuenta"),
 														inverseJoinColumns =  @JoinColumn(name="idCliente",referencedColumnName = "dni"))
 	private List<Cliente> clientes;
 	@OneToMany(mappedBy="cuenta")

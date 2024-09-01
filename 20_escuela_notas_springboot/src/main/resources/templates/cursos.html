@@ -27,8 +27,7 @@ https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css
 
 		<!-- Select de Cursos -->
 		<div class="mb-4">
-			<label for="cursosSelect" class="form-label">Selecciona un
-				Curso</label> <select id="cursoSel" class="form-select">
+			<label for="cursosSelect" class="form-label">Selecciona un Curso</label> <select id="cursoSel" class="form-select">
 				<option selected>-Todos-</option>
 				<option th:each="c:${cursos}" th:value="${c.idCurso}"
 					th:text="${c.nombre}"></option>

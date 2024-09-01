@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Inicio banca</title>
+</head>
+<body>
+	<div class= "container">
+		<h1>Bienvenido,<span th:text="${session.titular.nombre}">Nombre del Titular</span></h1>  
+		<!--  etiqueta para texto sin salto,expresion spring,
+		session->HTTL, Titular->dentro de la sesion. nombre ->propiedad del objeto, 
+		y si el variable es nulo aparecera nombre del titular -->
+		<h3><a href="toIngresar">Ingresar dinero</a></h3>
+		
+		<h3><a href="toSacar">Sacar dinero</a></h3>
+		
+		<h3><a href="toTransferencia">Realizar transferencia</a></h3>
+		
+		<h3><a href="toMovimientoCuenta">Consulta movimientos</a></h3>
+		
+		<h3><a href="toTitulares">Consulta titulares cuenta</a></h3>
+		
+		<h3><a href="toLogout">Salir de la cuenta</a></h3>
+	
+	
+	</div>
+
+</body>
+</html>

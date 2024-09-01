@@ -14,7 +14,7 @@ public class Cliente {
 	private String nombre;
 	private	String direccion;
 	private int telefono;
-	@ManyToMany(mappedBy = "cliente")// nombre del variable
+	@ManyToMany(mappedBy = "clientes")// nombre del variable
 	private List <Cuenta> cuentas;
 	public Cliente(int dni, String nombre, String direccion, int telefono) {
 		super();

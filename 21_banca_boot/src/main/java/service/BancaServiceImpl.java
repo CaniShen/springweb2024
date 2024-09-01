@@ -41,7 +41,7 @@ public class BancaServiceImpl implements BancaService {
 	public void ingreso(int numeroCuenta, double cantidad) {
 		Cuenta cuenta=cuentasDao.findById(numeroCuenta).orElse(null);
 		if(cuenta!=null) {
-			cuenta.setSaldo(cuenta.getSaldo()-cantidad);
+			cuenta.setSaldo(cuenta.getSaldo()+cantidad);
 			operacion(cantidad,"ingreso",cuenta);
 			
 		}else {
@@ -51,7 +51,7 @@ public class BancaServiceImpl implements BancaService {
 		
 		
 	}
-	@Transactional//(propagation = ) debere 1
+	@Transactional//(propagation=)   //debere 1
 	@Override
 	public void extraccion(int numeroCuenta, double cantidad) {
 		Cuenta cuenta=cuentasDao.findById(numeroCuenta).orElse(null);

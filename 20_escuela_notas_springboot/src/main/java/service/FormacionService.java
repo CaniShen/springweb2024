@@ -12,5 +12,6 @@ public interface FormacionService {
 	List<AlumnoMatriculadoDto> buscarAlumnosMatriculados(int idCurso); 
 	boolean altaCurso(CursoDto curso);
 	double notaMediaCurso(int idCurso);
+	boolean altaAlumno(AlumnoDto alumno);
 
 }

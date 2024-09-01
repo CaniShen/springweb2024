@@ -37,4 +37,14 @@ public class Mapeador {
 						curso.getFechaInicio(),
 						curso.getPrecio());
 	}
+
+
+
+	public Alumno alumnoDtoToEntity(AlumnoDto alumno) {
+		return new Alumno(alumno.getUsuario(),
+				alumno.getPassword(),
+				alumno.getNombre(),
+				alumno.getEmail(),
+				alumno.getEdad());
+	}
 }
